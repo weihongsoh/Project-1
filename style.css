@@ -1,11 +1,11 @@
-.arrow1 {
+.arrow0 {
     /* width: 200px; */
     /* height: 200px; */
-    top: 65px;
+    top: 315px;
     left: 1310px;
-    position: relative;
+    position: absolute;
 }
-.arrowTip {
+.arrowTip0 {
     width: 0px;
     height: 0px;
     border-left: 6px solid transparent;
@@ -16,99 +16,69 @@
     /* left: 690px; */
     /* top: 60px; */
 }
-.arrowBody {
+.arrowBody0 {
     width: 240px;
     height: 5px;
-    border-bottom: 2px solid blue;
+    border-bottom: 3px solid blue;
     -webkit-transform:
         translateY(110px)
         translateX(-112px)
         rotate(90deg);
-    position: relative;
+    position: absolute;
 }
-/* 120 */
-/* 623 */
-
-#triangle-up {
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid red;
+.arrow1 {
+    top: 875px;
+    left: 790px;
+    position: absolute;
 }
-
-#triangle-down {
-width: 0;
-height: 0;
-border-left: 50px solid transparent;
-border-right: 50px solid transparent;
-border-top: 100px solid red;
-}
-
-#triangle-left {
-width: 0;
-height: 0;
-border-top: 50px solid transparent;
-border-right: 100px solid red;
-border-bottom: 50px solid transparent;
-}
-
-#triangle-right {
-width: 0;
-height: 0;
-border-top: 50px solid transparent;
-border-left: 100px solid red;
-border-bottom: 50px solid transparent;
-}
-
-#triangle-topleft {
-width: 0;
-height: 0;
-border-top: 100px solid red;
-border-right: 100px solid transparent;
-}
-
-#triangle-topright {
-width: 0;
-height: 0;
-border-top: 100px solid red;
-border-left: 100px solid transparent;
-}
-
-#triangle-bottomleft {
-width: 0;
-height: 0;
-border-bottom: 100px solid red;
-border-right: 100px solid transparent;
-}
-
-#triangle-bottomright {
-width: 0;
-height: 0;
-border-bottom: 100px solid red;
-border-left: 100px solid transparent;
-}
-
-#oval {
-    width: 200px;
-    height: 100px;
-    background: red;
-    border-radius: 100px / 50px;
-}
-
-#pacman {
+.arrowTip1 {
     width: 0px;
     height: 0px;
-    border-right: 60px solid transparent;
-    border-top: 60px solid red;
-    border-left: 60px solid red;
-    border-bottom: 60px solid red;
-    border-top-left-radius: 60px;
-    border-top-right-radius: 60px;
-    border-bottom-left-radius: 60px;
-    border-bottom-right-radius: 60px;
-  }
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 30px solid purple;
+    -webkit-transform:
+    translateY(50px)
+    translateX(-100px)
+    rotate(315deg);
+}
+.arrowBody1 {
+    width: 200px;
+    height: 5px;
+    border-bottom: 3px solid purple;
+    -webkit-transform:
+        translateY(110px)
+        translateX(-112px)
+        rotate(45deg);
+    position: absolute;
+}
+.arrow2 {
+    top: 470px;
+    left: 500px;
+    position: absolute;
+}
+.arrowTip2 {
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 30px solid orange;
+    -webkit-transform:
+    translateY(-155px)
+    translateX(553px)
+    rotate(45deg);
 
+}
+.arrowBody2 {
+    width: 780px;
+    height: 5px;
+    border-bottom: 3px solid orange;
+    -webkit-transform:
+        translateY(110px)
+        translateX(-112px)
+        rotate(135deg);
+    position: absolute;
+}
 
 .board {
     top: 146px;
@@ -125,44 +95,6 @@ border-left: 100px solid transparent;
     /* background-color: transparent; */
 }
 
-/* .die-cube {
-    width: 300px;
-    height: 300px;
-    border-radius: 15%;
-    background: purple;
-    border: 1px solid black;
-    position: absolute;
-}
-
-.dot1 {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: black;
-} */
-
-/* .dot1-1
-.dot2-1
-.dot2-2
-.dot3-1
-.dot3-2
-.dot3-3
-.dot4-1
-.dot4-2
-.dot4-3
-.dot4-4
-.dot5-1
-.dot5-2
-.dot5-3
-.dot5-4
-.dot5-5
-.dot6-1
-.dot6-2
-.dot6-3
-.dot6-4
-.dot6-5
-.dot6-6 */
-
 .die {
     padding: 4px;
     background-color: white;
@@ -176,59 +108,19 @@ border-left: 100px solid transparent;
     font-size: 50px;
     position: absolute;
     z-index: 1;
-    top: 320px;
-    left: 50px;
+    top: 350px;
+    left: 40px;
 }
-
-.end {
-    width: 300px;
-    position: relative;
-    top: 320px;
-    font-size: 20px;;
-}
-
-/* body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    flex-wrap: wrap;
-    align-content: center;
-    background: linear-gradient(top, #222, #333);
-} */
-
-/* .dot {
-    display: block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: white;
-} */
 
 .menu {
     position: absolute;
     width: 300px;
-    height: 307px;
+    height: 350px;
     background: rgb(255, 241, 202);
     top: 145px;
-    /* left: 50px; */
 }
 
-.snakeTail {
-    width: 140px;
-    height: 15px;
-    background: red;
-    border-radius: 100px / 100px;
-    position: relative;
-    left: 335px;
-    top: 120px;
-    -webkit-transform:
-    translateY(0px)
-    translateX(0px)
-    rotate(110deg);
-}
-
-.snakeHead {
+.snakeHead0 {
     width: 0px;
     height: 0px;
     border-right: 20px solid transparent;
@@ -242,7 +134,104 @@ border-left: 100px solid transparent;
     left: 430px;
     top: 200px;
     position: absolute;
-  }
+}
+.snakeBody0 {
+    width: 140px;
+    height: 15px;
+    background: red;
+    border-radius: 100px / 100px;
+    position: absolute;
+    left: 350px;
+    top: 295px;
+    -webkit-transform:
+    translateY(0px)
+    translateX(0px)
+    rotate(105deg);
+}
+.snakeTail0 {
+    width: 10px;
+    height: 10px;
+    background: red;
+    position: absolute;
+    border-radius: 50%;
+    left: 385px;
+    top: 373px;
+}
+.snakeHead1 {
+    width: 0px;
+    height: 0px;
+    border-left: 20px solid transparent;
+    border-top: 20px solid green;
+    border-right: 20px solid green;
+    border-bottom: 20px solid green;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 480px;
+    top: 510px;
+    position: absolute;
+}
+  .snakeBody1 {
+    width: 640px;
+    height: 15px;
+    background: green;
+    border-radius: 100px / 100px;
+    position: absolute;
+    left: 520px;
+    top: 555px;
+    -webkit-transform:
+    translateY(0px)
+    translateX(0px)
+    rotate(5deg);
+}
+.snakeTail1 {
+    width: 10px;
+    height: 10px;
+    background: green;
+    position: absolute;
+    border-radius: 50%;
+    left: 1157px;
+    top: 595px;
+}
+.snakeHead2 {
+    width: 0px;
+    height: 0px;
+    border-left: 20px solid black;
+    border-top: 20px solid transparent;
+    border-right: 20px solid black;
+    border-bottom: 20px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 683px;
+    top: 405px;
+    position: absolute;
+}
+.snakeBody2 {
+    width: 240px;
+    height: 15px;
+    background: black;
+    border-radius: 100px / 100px;
+    position: absolute;
+    left: 583px;
+    top: 560px;
+    -webkit-transform:
+    translateY(0px)
+    translateX(0px)
+    rotate(90deg);
+}
+.snakeTail2 {
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: absolute;
+    border-radius: 50%;
+    left: 698px;
+    top: 695px;
+}
+
 
 
 .start {
@@ -250,16 +239,11 @@ border-left: 100px solid transparent;
     width: 100px;
     height: 100px;
     /* display: flex; */
-    top: 280px;
-    left: 180px;
+    top: 310px;
+    left: 170px;
 }
 
 .tile {
-    /* border: 1px solid black; */
-    /* background-color: lightblue; */
-    /* margin: auto; */
-    /* width: 100px; */
-    /* height: 100px; */
     height: 100px;
     flex-basis: 100px;
     display: flex;
@@ -268,6 +252,7 @@ border-left: 100px solid transparent;
     color: black;
     text-shadow: 1px 1px 1px white;
     border: 1px solid gray;
+    background: rgb(255, 229, 124);
 }
 
 .title {
