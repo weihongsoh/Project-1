@@ -3,6 +3,7 @@
 //////////
 // Project 1
 //////////
+console.log('Snakes & Ladders\n\n');
 
 // create menu
 const makeMenu = () => {
@@ -43,9 +44,12 @@ const makePBoard = (num) => {
     const board = document.createElement('div');
     board.classList.add('sBoard');
     document.querySelector('body').insertBefore(board, document.querySelector('body').childNodes[2]);
-    // .
-    // .
-    // .
+
+
+
+
+
+
 };
 
 // create the board tiles
@@ -154,72 +158,120 @@ const makeDie = () => {
 
 
 
+
+///////////////////////////////
+    // add snake and ladder mechanics here
+const makeArrow = () => {
+    const arrow = document.createElement('div');
+    arrow.classList.add('arrow');
+    document.querySelector('body').insertBefore(arrow, document.querySelector('body').childNodes[5]);
+    const arrow1 = document.createElement('div');
+    arrow1.classList.add('arrow1');
+    arrow.append(arrow1);
+    const arrowTip = document.createElement('div');
+    arrowTip.classList.add('arrow', 'arrowTip');
+    arrow1.append(arrowTip);         
+    const arrowBody = document.createElement('div');
+    arrowBody.classList.add('arrow', 'arrowBody');
+    arrow1.append(arrowBody);
+            
+    // document.querySelector('.arrow').append(arrow1);
+};
+
+const makeSnake = () => {
+    const snake = document.createElement('div');
+    snake.classList.add('snake');
+    document.querySelector('body').insertBefore(snake, document.querySelector('body').childNodes[6]);
+    const snake1 = document.createElement('div');
+    snake1.classList.add('snake1');
+    snake.append(snake1);
+    const snakeHead = document.createElement('div');
+    snakeHead.classList.add('snakeHead');
+    snake1.append(snakeHead);
+    const snakeTail = document.createElement('div');
+    snakeTail.classList.add('snakeTail');
+    snake1.append(snakeTail);    
+};
+
+
+
+
+        // to here
+/////////////////////////////////    
+
+
+
 // Starting title
 const h1 = document.createElement('h1');
 h1.classList.add('title');
 h1.innerText = 'Welcome to Snakes & Ladders!'; // maybe can upgrade to Slides and Esca-Ladders
 document.querySelector('body').prepend(h1);
 
-/////////////////////
-    // add snake and ladder mechanics here
-    const makeArrow = () => {
-        const arrow = document.createElement('svg');
-        arrow.classList.add('arrow');
-        document.querySelector('body').insertBefore(arrow, document.querySelector('body').childNodes[0]);
-        const arrow1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        arrow1.setAttribute("d","M500 L100 1000 L900 1000 z"); //Set path's data
-        arrow1.style.stroke = "red"; //Set stroke colour
-        arrow1.style.strokeWidth = "5px"; //Set stroke width
-        document.querySelector('.arrow').append(arrow1);
-    };
-    
-        // to here
-    ///////////////////////    
-
-
 // Set the size of the board, based on equal numbers of rows & columns
 // maybe can add a check: allow even numbers only
 // or change width/height formula to take input as consideration
 
-let nRows = 4;
 
-// makeMenu();
-// makeSBoard(nRows);
-// makeToken(1);
-// makeDie(); // remember to change back childNodes[?] after testing
+
+// Start of game, setting number of rows
+let nRows = 10;
+
+makeMenu();
+makeSBoard(nRows);
+makeToken(1);
+makeDie(); // remember to change back childNodes[?] after testing
 // makePBoard(10);
 makeArrow();
+makeSnake();
 
-let player = 0;
+// game stats
+let player = 0; // player starting position
+let timer = 600; // time delay to move the token
+let dieSided = 6; // maximum number on the die
+// snake/ladder positions
+
+const jump = (startPos, endPos) => {
+    if (player === startPos) {
+        setTimeout(function() {
+            document.querySelector('#tile' + player).append(document.querySelector('.token'));
+        }, timer/2);
+        setTimeout(function() {
+            player = endPos;
+        }, timer);
+        console.log(`player jumps from ${startPos} to ${endPos}\n\n`);
+    };
+}
+
+
+
+document.querySelector('.die-body').addEventListener('click', (e) => {
 // document.querySelector('.die-body').onclick = function rollDie() {
-//     // document.querySelector('.die-body').innerText = Math.ceil(Math.random() * 6);
-//     const dieResult = Math.ceil(Math.random() * 6);
-//     document.querySelector('.die-body').innerText = dieResult;
-//     console.log('dieResult is ' + dieResult);
-//     player += dieResult;
+    const dieResult = Math.ceil(Math.random() * dieSided);
+    document.querySelector('.die-body').innerText = dieResult;
 
+    console.log(`player was ${player} and dieResult is ${dieResult}`);
+    player += dieResult;
 
-
-//     if (player >= (nRows * nRows)) {
-//         player = (nRows * nRows);
-//         document.querySelector('#tile' + player).append(document.querySelector('.token'));
-//         setTimeout(function() {
-//             alert('Game ends. You have reached the finish tile.\nRefresh the browser to play again.');
-//         }, 100);
-//         // const end = document.createElement('div');
-//         // end.classList.add('end');
-//         // end.innerText = 'Game ends. You have reached the finish tile.'
-//         // document.querySelector('body').insertBefore(end, document.querySelector('body').childNodes[5]);
-
-//     };
-    // if (player === (nRows * nRows)) {
-    //     const end = document.createElement('div');
-    //     end.classList.add('end');
-    //     end.innerText = 'Game ends. You have reached the finish tile.'
-    //     document.querySelector('body').insertBefore(end, document.querySelector('body').childNodes[5]);
+    jump(4, 13);
+    jump(99, 80);
+    // if (player === 4) {
+    //     setTimeout(function() {
+    //         document.querySelector('#tile' + player).append(document.querySelector('.token'));
+    //     }, timer/2);
+    //     setTimeout(function() {
+    //         player = 13;
+    //     }, timer);
     // };
 
-    console.log('player is ' + player);
+    if (player >= (nRows * nRows)) {
+        player = (nRows * nRows);
+        document.querySelector('#tile' + player).append(document.querySelector('.token'));
+        setTimeout(function() {
+            alert('Game ends. You have reached the finish tile.\nRefresh the browser to play again.');
+        }, 100);
+    };
+
+    // console.log(`player is now ${player}`);
     // if (let i = 0; i < dieResult; i++) {
     // document.querySelector('#tile' + i).append(document.querySelector('.token'));
     // }
@@ -228,8 +280,12 @@ let player = 0;
     //     document.querySelector('#tile' + i).append(document.querySelector('.token'));
     //     console.log(document.querySelector('#tile' + i));
     // }
+    setTimeout(function() {
+        document.querySelector('#tile' + player).append(document.querySelector('.token'));
+    }, timer);
 
-    document.querySelector('#tile' + player).append(document.querySelector('.token'));
-};
+    console.log(`player is now ${player}`);
 
+// };
+});
 

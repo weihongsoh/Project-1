@@ -1,8 +1,114 @@
-.arrow {
-    width: 200px;
-    height: 300px;
-    z-index: -4;
+.arrow1 {
+    /* width: 200px; */
+    /* height: 200px; */
+    top: 65px;
+    left: 1310px;
+    position: relative;
 }
+.arrowTip {
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 30px solid blue;
+    /* position: relative; */
+    /* bottom: 10px; */
+    /* left: 690px; */
+    /* top: 60px; */
+}
+.arrowBody {
+    width: 240px;
+    height: 5px;
+    border-bottom: 2px solid blue;
+    -webkit-transform:
+        translateY(110px)
+        translateX(-112px)
+        rotate(90deg);
+    position: relative;
+}
+/* 120 */
+/* 623 */
+
+#triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+}
+
+#triangle-down {
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-top: 100px solid red;
+}
+
+#triangle-left {
+width: 0;
+height: 0;
+border-top: 50px solid transparent;
+border-right: 100px solid red;
+border-bottom: 50px solid transparent;
+}
+
+#triangle-right {
+width: 0;
+height: 0;
+border-top: 50px solid transparent;
+border-left: 100px solid red;
+border-bottom: 50px solid transparent;
+}
+
+#triangle-topleft {
+width: 0;
+height: 0;
+border-top: 100px solid red;
+border-right: 100px solid transparent;
+}
+
+#triangle-topright {
+width: 0;
+height: 0;
+border-top: 100px solid red;
+border-left: 100px solid transparent;
+}
+
+#triangle-bottomleft {
+width: 0;
+height: 0;
+border-bottom: 100px solid red;
+border-right: 100px solid transparent;
+}
+
+#triangle-bottomright {
+width: 0;
+height: 0;
+border-bottom: 100px solid red;
+border-left: 100px solid transparent;
+}
+
+#oval {
+    width: 200px;
+    height: 100px;
+    background: red;
+    border-radius: 100px / 50px;
+}
+
+#pacman {
+    width: 0px;
+    height: 0px;
+    border-right: 60px solid transparent;
+    border-top: 60px solid red;
+    border-left: 60px solid red;
+    border-bottom: 60px solid red;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+
 
 .board {
     top: 146px;
@@ -107,6 +213,37 @@
     top: 145px;
     /* left: 50px; */
 }
+
+.snakeTail {
+    width: 140px;
+    height: 15px;
+    background: red;
+    border-radius: 100px / 100px;
+    position: relative;
+    left: 335px;
+    top: 120px;
+    -webkit-transform:
+    translateY(0px)
+    translateX(0px)
+    rotate(110deg);
+}
+
+.snakeHead {
+    width: 0px;
+    height: 0px;
+    border-right: 20px solid transparent;
+    border-top: 20px solid red;
+    border-left: 20px solid red;
+    border-bottom: 20px solid red;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 430px;
+    top: 200px;
+    position: absolute;
+  }
+
 
 .start {
     position: relative;
