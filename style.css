@@ -1,0 +1,161 @@
+.board {
+    top: 146px;
+    position: absolute;
+    /* margin: auto; */
+    /* width: 90%; */
+    left: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 1020px;
+    height: 1020px;
+    /* background: transparent; */
+    /* background-color: transparent; */
+}
+
+/* .die-cube {
+    width: 300px;
+    height: 300px;
+    border-radius: 15%;
+    background: purple;
+    border: 1px solid black;
+    position: absolute;
+}
+
+.dot1 {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+} */
+
+/* .dot1-1
+.dot2-1
+.dot2-2
+.dot3-1
+.dot3-2
+.dot3-3
+.dot4-1
+.dot4-2
+.dot4-3
+.dot4-4
+.dot5-1
+.dot5-2
+.dot5-3
+.dot5-4
+.dot5-5
+.dot6-1
+.dot6-2
+.dot6-3
+.dot6-4
+.dot6-5
+.dot6-6 */
+
+.die {
+    padding: 4px;
+    background-color: white;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 15%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 50px;
+    position: absolute;
+    z-index: 1;
+    top: 320px;
+    left: 50px;
+    animation; fadeIn linear 7s;
+}
+
+.end {
+    width: 300px;
+    position: relative;
+    top: 320px;
+    font-size: 20px;;
+}
+
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    flex-wrap: wrap;
+    align-content: center;
+    background: linear-gradient(top, #222, #333);
+} */
+
+/* .dot {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+} */
+
+.menu {
+    position: absolute;
+    width: 300px;
+    height: 307px;
+    background: rgb(255, 241, 202);
+    top: 145px;
+    /* left: 50px; */
+}
+
+.start {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    /* display: flex; */
+    top: 280px;
+    left: 180px;
+}
+
+.tile {
+    /* border: 1px solid black; */
+    /* background-color: lightblue; */
+    /* margin: auto; */
+    /* width: 100px; */
+    /* height: 100px; */
+    height: 100px;
+    flex-basis: 100px;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    color: black;
+    text-shadow: 1px 1px 1px white;
+    border: 1px solid gray;
+}
+
+.title {
+    position: relative;
+    margin: auto;
+}
+
+.token {
+    position: relative;
+    top: 25px;
+    left: 30px;
+    /* bottom: -20px; */
+    /* left: 102px; */
+    /* bottom: 102px; */
+}
+
+.token-top {
+    background: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    /* position: relative; */
+}
+
+.token-bottom {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 30px solid red;
+    position: relative;
+    bottom: 10px;
+}
