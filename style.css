@@ -1,3 +1,9 @@
+.arrow {
+    width: 200px;
+    height: 300px;
+    z-index: -4;
+}
+
 .board {
     top: 146px;
     position: absolute;
@@ -66,7 +72,6 @@
     z-index: 1;
     top: 320px;
     left: 50px;
-    animation; fadeIn linear 7s;
 }
 
 .end {

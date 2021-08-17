@@ -160,6 +160,22 @@ h1.classList.add('title');
 h1.innerText = 'Welcome to Snakes & Ladders!'; // maybe can upgrade to Slides and Esca-Ladders
 document.querySelector('body').prepend(h1);
 
+/////////////////////
+    // add snake and ladder mechanics here
+    const makeArrow = () => {
+        const arrow = document.createElement('svg');
+        arrow.classList.add('arrow');
+        document.querySelector('body').insertBefore(arrow, document.querySelector('body').childNodes[0]);
+        const arrow1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        arrow1.setAttribute("d","M500 L100 1000 L900 1000 z"); //Set path's data
+        arrow1.style.stroke = "red"; //Set stroke colour
+        arrow1.style.strokeWidth = "5px"; //Set stroke width
+        document.querySelector('.arrow').append(arrow1);
+    };
+    
+        // to here
+    ///////////////////////    
+
 
 // Set the size of the board, based on equal numbers of rows & columns
 // maybe can add a check: allow even numbers only
@@ -167,35 +183,41 @@ document.querySelector('body').prepend(h1);
 
 let nRows = 4;
 
-makeMenu();
-makeSBoard(nRows);
-makeToken(1);
-makeDie(); // remember to change back childNodes[?] after testing
+// makeMenu();
+// makeSBoard(nRows);
+// makeToken(1);
+// makeDie(); // remember to change back childNodes[?] after testing
 // makePBoard(10);
+makeArrow();
 
 let player = 0;
-document.querySelector('.die-body').onclick = function rollDie() {
-    // document.querySelector('.die-body').innerText = Math.ceil(Math.random() * 6);
-    const dieResult = Math.ceil(Math.random() * 6);
-    document.querySelector('.die-body').innerText = dieResult;
-    console.log('dieResult is ' + dieResult);
-    player += dieResult;
+// document.querySelector('.die-body').onclick = function rollDie() {
+//     // document.querySelector('.die-body').innerText = Math.ceil(Math.random() * 6);
+//     const dieResult = Math.ceil(Math.random() * 6);
+//     document.querySelector('.die-body').innerText = dieResult;
+//     console.log('dieResult is ' + dieResult);
+//     player += dieResult;
 
 
-    // add snake and ladder mechanics here
 
+//     if (player >= (nRows * nRows)) {
+//         player = (nRows * nRows);
+//         document.querySelector('#tile' + player).append(document.querySelector('.token'));
+//         setTimeout(function() {
+//             alert('Game ends. You have reached the finish tile.\nRefresh the browser to play again.');
+//         }, 100);
+//         // const end = document.createElement('div');
+//         // end.classList.add('end');
+//         // end.innerText = 'Game ends. You have reached the finish tile.'
+//         // document.querySelector('body').insertBefore(end, document.querySelector('body').childNodes[5]);
 
-    // to here
-
-    if (player > (nRows * nRows)) {
-        player = (nRows * nRows);
-    };
-    if (player === (nRows * nRows)) {
-        const end = document.createElement('div');
-        end.classList.add('end');
-        end.innerText = 'Game ends. You have reached the finish tile.'
-        document.querySelector('body').insertBefore(end, document.querySelector('body').childNodes[5]);
-    };
+//     };
+    // if (player === (nRows * nRows)) {
+    //     const end = document.createElement('div');
+    //     end.classList.add('end');
+    //     end.innerText = 'Game ends. You have reached the finish tile.'
+    //     document.querySelector('body').insertBefore(end, document.querySelector('body').childNodes[5]);
+    // };
 
     console.log('player is ' + player);
     // if (let i = 0; i < dieResult; i++) {
@@ -209,118 +231,5 @@ document.querySelector('.die-body').onclick = function rollDie() {
 
     document.querySelector('#tile' + player).append(document.querySelector('.token'));
 };
-
-
-// document.getElementById('demo').onclick = function changeContent() {
-
-//     document.getElementById('demo').textContent = "Help me";
-//     document.getElementById('demo').style = "Color: red";
- 
-//  }
-
-// document.querySelector('#submit-btn').onclick = function transfer() {
-//     const ibox = document.querySelector('#input-box');
-//     const inputValue = document.querySelector('#input-box').value;
-//     console.log(inputValue);
-// }
-
-// document.querySelector('#submit-btn').on('click', () => {
-//     const ibox = document.querySelector('#input-box');
-//     const inputValue = document.querySelector('#input-box').value;
-//     console.log(inputValue);
-// });
-
-// $('#submit-btn').on('click', () => {
-//     const inputValue = $('#input-box').val();
-//     console.log( inputValue );
-// });
-
-
-
-
-
-
-
-// for (let j = num ** 2 - (num * 0); j > num ** 2 - (num * 1); j--) {
-//     makeTiles(j);
-// };
-// // 81 to 90
-// for (let k = num ** 2 - (num * 2) + 1; k <= num ** 2 - (num * 1); k++) {
-//     makeTiles(k);
-// };
-
-// // 80 to 71
-// for (let j = num ** 2 - (num * 2); j > num ** 2 - (num * 3); j--) {
-//     makeTiles(j);
-// };
-// // 61 to 70
-// for (let k = num ** 2 - (num * 4) + 1; k <= num ** 2 - (num * 3); k++) {
-//     makeTiles(k);
-// };
-
-// // 60 to 51
-// for (let j = num ** 2 - (num * 4); j > num ** 2 - (num * 5); j--) {
-//     makeTiles(j);
-// };
-// // 41 to 50
-// for (let k = num ** 2 - (num * 6) + 1; k <= num ** 2 - (num * 5); k++) {
-//     makeTiles(k);
-// };
-
-
-
-// let x = 0;
-
-// // 100 to 91
-// // for (let j = num ** 2 - (num * 0); j > num ** 2 - (num * 1); j--) {
-// for (let j = num ** 2 - (num * x); j > num ** 2 - (num * (x + 1)); j--) {
-//     makeTiles(j);
-// };
-// // 81 to 90
-// // for (let k = num ** 2 - (num * 2) + 1; k <= num ** 2 - (num * 1); k++) {
-// for (let k = num ** 2 - (num * (x + 2)) + 1; k <= num ** 2 - (num * (x + 1)); k++) {
-//     makeTiles(k);
-// };
-
-// x += 2;
-
-// // 80 to 71
-// // for (let j = num ** 2 - (num * 2); j > num ** 2 - (num * 3); j--) {
-// for (let j = num ** 2 - (num * x); j > num ** 2 - (num * (x + 1)); j--) {
-//     makeTiles(j);
-// };
-// // 61 to 70
-// // for (let k = num ** 2 - (num * 4) + 1; k <= num ** 2 - (num * 3); k++) {
-// for (let k = num ** 2 - (num * (x * 2)) + 1; k <= num ** 2 - (num * (x + 1)); k++) {
-//     makeTiles(k);
-// };
-
-// x += 2;
-
-// // 60 to 51
-// // for (let j = num ** 2 - (num * 4); j > num ** 2 - (num * 5); j--) {        
-// for (let j = num ** 2 - (num * x); j > num ** 2 - (num * (x + 1)); j--) {
-//     makeTiles(j);
-// };
-// // 41 to 50
-// // for (let k = num ** 2 - (num * 6) + 1; k <= num ** 2 - (num * 5); k++) {        
-// for (let k = num ** 2 - (num * (x + 2)) + 1; k <= num ** 2 - (num * (x + 1)); k++) {
-//     makeTiles(k);
-// };
-
-
-
-// for (let j = num ** 2; j > 0; j--) {
-//     makeTiles(j);
-// };
-// for (let k = 0; k < num ** 2; k++) {
-//     makeTiles(k);
-// };
-
-
-
-
-
-
 
 
