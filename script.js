@@ -61,22 +61,23 @@ const makeTiles = (num) => {
 
 // create the game token(s)
 const makeToken = (num) => {
-    const start = document.createElement('div');
-    start.classList.add('tile', 'start');
-    start.innerText = 'Start';
-    document.querySelector('body').insertBefore(start, document.querySelector('body').childNodes[3]);
+    // const start = document.createElement('div');
+    // start.classList.add('tile', 'start');
+    // start.innerText = 'Start';
+    // document.querySelector('body').insertBefore(start, document.querySelector('body').childNodes[3]);
     
     // document.querySelector('body').insertBefore(token, document.querySelector('body').childNodes[3]);
     
     for (let i = 1; i <= num; i++) {
         const token = document.createElement('div');
         token.classList.add('token' + i);
-        document.querySelector('.start').append(token);
+        document.querySelector('#tile1').append(token);
         const tokenTop = document.createElement('div');
-        tokenTop.classList.add('tokenTop' + i, 'player' + i)
+        tokenTop.classList.add('tokenTop' + i, 'player' + i);
+        tokenTop.innerText = i;
         token.append(tokenTop);
         const tokenBottom = document.createElement('div');
-        tokenBottom.classList.add('tokenBottom' + i, 'player' + i)
+        tokenBottom.classList.add('tokenBottom' + i, 'player' + i);
         token.append(tokenBottom);
     };
 };
@@ -152,10 +153,10 @@ document.querySelector('body').prepend(h1);
 
 // game stats
 let nRows = 10; // number of rows for the board
-let tilePos = [0, 0]; // player 1's position
+let tilePos = [1, 1]; // player 1's position
 // let tilePos2 = 0; // player 2's position
 let timer = 500; // time delay to move the token
-let dieSided = 1; // maximum number on the die
+let dieSided = 9; // maximum number on the die
 let pTurn = 0; // which player's turn to go
 
 makeMenu();
@@ -175,10 +176,8 @@ document.querySelector('.die-body').addEventListener('click', (e) => {
 
     pTurn = (pTurn % 2) + 1;
 
-    console.log(`player${pTurn} was ${tilePos[pTurn - 1]} and dieResult is ${dieResult}`);
+    console.log(`player${pTurn} was on tile ${tilePos[pTurn - 1]} and die result is ${dieResult}`);
     tilePos[pTurn - 1] += dieResult;
-
-    console.log('tilePos is ' + tilePos[pTurn - 1]);
 
     // snakes, higher to lower tile position
     jumpPoint(62, 52);
@@ -211,7 +210,7 @@ document.querySelector('.die-body').addEventListener('click', (e) => {
 
     setTimeout(function() {
         document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
-        console.log(`player${pTurn} is now ${tilePos[pTurn - 1]}`);
+        console.log(`player${pTurn} is now on tile ${tilePos[pTurn - 1]}`);
     }, timer);
 
 
