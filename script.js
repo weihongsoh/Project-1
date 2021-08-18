@@ -65,19 +65,19 @@ const makeToken = (num) => {
     start.classList.add('tile', 'start');
     start.innerText = 'Start';
     document.querySelector('body').insertBefore(start, document.querySelector('body').childNodes[3]);
-    const token = document.createElement('div');
-    token.classList.add('token');
-
+    
     // document.querySelector('body').insertBefore(token, document.querySelector('body').childNodes[3]);
-    document.querySelector('.start').append(token);
-
+    
     for (let i = 1; i <= num; i++) {
+        const token = document.createElement('div');
+        token.classList.add('token' + i);
+        document.querySelector('.start').append(token);
         const tokenTop = document.createElement('div');
-        tokenTop.classList.add('token-top', 'player' + num)
-        document.querySelector('.token').append(tokenTop);
+        tokenTop.classList.add('tokenTop' + i, 'player' + i)
+        token.append(tokenTop);
         const tokenBottom = document.createElement('div');
-        tokenBottom.classList.add('token-bottom', 'player' + num)
-        document.querySelector('.token').append(tokenBottom);
+        tokenBottom.classList.add('tokenBottom' + i, 'player' + i)
+        token.append(tokenBottom);
     };
 };
 
@@ -126,14 +126,14 @@ const makeSnake = (num) => {
         snake1.append(snakeTail);    
     };
 };
-
-const jump = (startPos, endPos) => {
-    if (player === startPos) {
+// create jump points for sname and ladder
+const jumpPoint = (startPos, endPos) => {
+    if (tilePos[pTurn - 1] === startPos) {
         setTimeout(function() {
-            document.querySelector('#tile' + player).append(document.querySelector('.token'));
+            document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
         }, timer/2);
         setTimeout(function() {
-            player = endPos;
+            tilePos[pTurn - 1] = endPos;
         }, timer);
         console.log(`player jumps from ${startPos} to ${endPos}\n\n`);
     };
@@ -152,40 +152,48 @@ document.querySelector('body').prepend(h1);
 
 // game stats
 let nRows = 10; // number of rows for the board
-let player = 0; // player starting position
+let tilePos = [0, 0]; // player 1's position
+// let tilePos2 = 0; // player 2's position
 let timer = 500; // time delay to move the token
-let dieSided = 3; // maximum number on the die
+let dieSided = 1; // maximum number on the die
+let pTurn = 0; // which player's turn to go
 
 makeMenu();
 makeSBoard(nRows);
-makeToken(1);
+makeToken(2);
 makeDie();
 // makePBoard(10); (EXPERIMENTAL)
 makeArrow(3);
 makeSnake(3);
 
 
-
+// roll die, get number
 document.querySelector('.die-body').addEventListener('click', (e) => {
 // document.querySelector('.die-body').onclick = function rollDie() {
     const dieResult = Math.ceil(Math.random() * dieSided);
     document.querySelector('.die-body').innerText = dieResult;
 
-    console.log(`player was ${player} and dieResult is ${dieResult}`);
-    player += dieResult;
+    pTurn = (pTurn % 2) + 1;
 
-    // snakes
-    jump(62, 52);
-    jump(77, 44);
-    jump(99, 80);
-    // ladders
-    jump(6, 24);
-    jump(22, 88);
-    jump(51, 90);
+    console.log(`player${pTurn} was ${tilePos[pTurn - 1]} and dieResult is ${dieResult}`);
+    tilePos[pTurn - 1] += dieResult;
 
-    if (player >= (nRows * nRows)) {
-        player = (nRows * nRows);
-        document.querySelector('#tile' + player).append(document.querySelector('.token'));
+    console.log('tilePos is ' + tilePos[pTurn - 1]);
+
+    // snakes, higher to lower tile position
+    jumpPoint(62, 52);
+    jumpPoint(77, 44);
+    jumpPoint(99, 80);
+    // ladders, lower to higher tile position
+    jumpPoint(6, 24);
+    jumpPoint(22, 88);
+    jumpPoint(51, 90);
+
+
+
+    if (tilePos[pTurn - 1] >= (nRows * nRows)) {
+        tilePos[pTurn - 1] = (nRows * nRows);
+        document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
         setTimeout(function() {
             alert('Game ends. You have reached the finish tile.\nRefresh the browser to play again.');
         }, 100);
@@ -200,12 +208,14 @@ document.querySelector('.die-body').addEventListener('click', (e) => {
     //     document.querySelector('#tile' + i).append(document.querySelector('.token'));
     //     console.log(document.querySelector('#tile' + i));
     // }
+
     setTimeout(function() {
-        document.querySelector('#tile' + player).append(document.querySelector('.token'));
+        document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
+        console.log(`player${pTurn} is now ${tilePos[pTurn - 1]}`);
     }, timer);
 
-    console.log(`player is now ${player}`);
 
-// };
+
+
+
 });
-

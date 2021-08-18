@@ -232,8 +232,6 @@
     top: 695px;
 }
 
-
-
 .start {
     position: relative;
     width: 100px;
@@ -260,29 +258,51 @@
     margin: auto;
 }
 
-.token {
+.token1 {
     position: relative;
-    top: 25px;
-    left: 30px;
+    top: 30px;
+    left: 50px;
     /* bottom: -20px; */
     /* left: 102px; */
     /* bottom: 102px; */
 }
-
-.token-top {
+.tokenTop1 {
     background: red;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    /* position: relative; */
+    position: absolute;
 }
-
-.token-bottom {
+.tokenBottom1 {
     width: 0px;
     height: 0px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 30px solid red;
+    position: absolute;
+    bottom: 60px;
+}
+.token2 {
     position: relative;
-    bottom: 10px;
+    top: 30px;
+    left: 10px;
+    /* bottom: -20px; */
+    /* left: 102px; */
+    /* bottom: 102px; */
+}
+.tokenTop2 {
+    background: blue;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+}
+.tokenBottom2 {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 30px solid blue;
+    position: absolute;
+    bottom: 60px;
 }
