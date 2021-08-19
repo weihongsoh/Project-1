@@ -10,7 +10,7 @@
     height: 0px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 30px solid blue;
+    border-bottom: 30px solid rgb(0, 255, 255);
     /* position: relative; */
     /* bottom: 10px; */
     /* left: 690px; */
@@ -19,7 +19,7 @@
 .arrowBody0 {
     width: 240px;
     height: 5px;
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid rgb(0, 255, 255);
     -webkit-transform:
         translateY(110px)
         translateX(-112px)
@@ -36,7 +36,7 @@
     height: 0px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 30px solid purple;
+    border-bottom: 30px solid rgb(255, 0, 255);
     -webkit-transform:
     translateY(50px)
     translateX(-100px)
@@ -45,7 +45,7 @@
 .arrowBody1 {
     width: 200px;
     height: 5px;
-    border-bottom: 3px solid purple;
+    border-bottom: 3px solid rgb(255, 0, 255);
     -webkit-transform:
         translateY(110px)
         translateX(-112px)
@@ -80,11 +80,10 @@
     position: absolute;
 }
 
+/* for sBoard */
 .board {
     top: 146px;
     position: absolute;
-    /* margin: auto; */
-    /* width: 90%; */
     left: 320px;
     display: flex;
     flex-wrap: wrap;
@@ -93,7 +92,22 @@
     height: 1020px;
     /* background: transparent; */
     /* background-color: transparent; */
+    /* margin: auto; */
+    /* width: 90%; */
 }
+
+/* for pBoard */
+.board1 {
+    top: 146px;
+    position: absolute;
+    left: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 918px;
+    height: 918px;
+}
+
 
 .die {
     padding: 4px;
@@ -108,15 +122,63 @@
     font-size: 50px;
     position: absolute;
     z-index: 1;
-    top: 350px;
+    top: 420px;
     left: 40px;
+}
+
+/* for sBoard */
+.image {
+    width: 1020px;
+    height: 1020px;
+    left: 321px;
+    top: 147px;
+    position: absolute;
+    z-index: -1;
+}
+
+/* for pBoard */
+.image1 {
+    width: 918px;
+    height: 918px;
+    left: 313px;
+    top: 102px;
+    position: relative;
+    z-index: -1;
+}
+
+.ladder0 {
+    width: 40px;
+    height: 320px;
+    position: absolute; 
+    left: 1280px;
+    top: 300px;
+}
+.ladder1 {
+    width: 200px;
+    height: 230px;
+    position: absolute; 
+    left: 520px;
+    top: 900px;
+}
+.ladder2 {
+    width: 160px;
+    height: 650px;
+    position: absolute; 
+    left: 800px;
+    top: 240px;
+    -webkit-transform:
+    translateY(0px)
+    translateX(0px)
+    rotate(38deg);
+
 }
 
 .menu {
     position: absolute;
     width: 300px;
-    height: 350px;
+    height: 400px;
     background: rgb(255, 241, 202);
+    font-size: 20px;
     top: 145px;
 }
 
@@ -124,9 +186,9 @@
     width: 0px;
     height: 0px;
     border-right: 20px solid transparent;
-    border-top: 20px solid red;
-    border-left: 20px solid red;
-    border-bottom: 20px solid red;
+    border-top: 20px solid yellow;
+    border-left: 20px solid yellow;
+    border-bottom: 20px solid yellow;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -138,7 +200,7 @@
 .snakeBody0 {
     width: 140px;
     height: 15px;
-    background: red;
+    background: yellow;
     border-radius: 100px / 100px;
     position: absolute;
     left: 350px;
@@ -151,7 +213,7 @@
 .snakeTail0 {
     width: 10px;
     height: 10px;
-    background: red;
+    background: yellow;
     position: absolute;
     border-radius: 50%;
     left: 385px;
@@ -197,25 +259,25 @@
 .snakeHead2 {
     width: 0px;
     height: 0px;
-    border-left: 20px solid black;
+    border-left: 20px solid white;
     border-top: 20px solid transparent;
-    border-right: 20px solid black;
-    border-bottom: 20px solid black;
+    border-right: 20px solid white;
+    border-bottom: 20px solid white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    left: 683px;
+    left: 555px;
     top: 405px;
     position: absolute;
 }
 .snakeBody2 {
     width: 240px;
     height: 15px;
-    background: black;
+    background: white;
     border-radius: 100px / 100px;
     position: absolute;
-    left: 583px;
+    left: 455px;
     top: 560px;
     -webkit-transform:
     translateY(0px)
@@ -225,12 +287,27 @@
 .snakeTail2 {
     width: 10px;
     height: 10px;
-    background: black;
+    background: white;
     position: absolute;
     border-radius: 50%;
-    left: 698px;
+    left: 570px;
     top: 695px;
 }
+.snake3 {
+    width: 120px;
+    height: 150px;
+    position: absolute; 
+    left: 1070px;
+    top: 900px;
+}
+.snake4 {
+    width: 220px;
+    height: 140px;
+    position: absolute; 
+    left: 980px;
+    top: 660px;
+}
+
 
 .start {
     position: relative;
@@ -241,16 +318,35 @@
     left: 170px;
 }
 
+/* for sBoard */
 .tile {
     height: 100px;
     flex-basis: 100px;
     display: flex;
+    color: rgb(0, 255, 0);
+    font-size: 18px;
+    border: 1px solid gray;
+    background: transparent;
+    z-index: 1;
     /* align-items: center; */
     /* justify-content: center; */
-    color: black;
-    text-shadow: 1px 1px 1px white;
+    text-shadow: 2px 2px 2px black;
+    /* background: rgb(255, 229, 124); */
+}
+
+/* for pBoard */
+.tile1 {
+    height: 100px;
+    flex-basis: 100px;
+    display: flex;
+    color: white;
     border: 1px solid gray;
-    background: rgb(255, 229, 124);
+    background: transparent;
+    z-index: 1;
+}
+
+#tile1, #tile100 {
+    /* background: white; */
 }
 
 .title {
@@ -271,6 +367,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    border: 1px solid white;
     position: absolute;
     text-align: center;
     color: white;
@@ -298,6 +395,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    border: 1px solid white;
     position: absolute;
     text-align: center;
     color: white;
