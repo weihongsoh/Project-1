@@ -9,8 +9,130 @@ console.log('Snakes & Ladders\n\n');
 const makeMenu = () => {
     const menu = document.createElement('div');
     menu.classList.add('menu');
-    menu.innerText = 'Welcome, you are now playing Snakes & Ladders.\n\nHere are the rules:\n-Click the white die below to produce a number.\n-The player tokens will then take the number of steps according to the die number.\n-Reach the last square to finish the game.';
+    menu.innerText = 'Click the Start Game button to begin.';
     document.querySelector('body').insertBefore(menu, document.querySelector('body').childNodes[1]);
+
+    // game mode 1
+    const button = document.createElement('button');
+    button.classList.add('button0');
+    button.innerHTML = 'Start Game';
+    document.querySelector('body').append(button);
+    button.addEventListener('click', (e) => {
+
+        // menu intro update
+        menu.innerText = 'Here are the rules:\n-Click the white die below to produce a number.\n-The player tokens will then take the number of steps according to the die number.\n-Land on the base of a ladder to climb forward.\n-Land on the head of a snake to drop backward to its tail.\n-Reach the final square to finish the game.';
+
+        button1.remove();
+        button.innerHTML = 'Restart Game';
+        button.setAttribute('onClick', 'window.location.reload()');
+        makeSBoard(nRows);
+        makeToken(2);
+        makeDie();
+        makeLadder(3);
+        makeSnake(3);
+        
+        // click die, get number, move player
+        document.querySelector('.die-body').addEventListener('click', (e) => {
+            const dieResult = Math.ceil(Math.random() * dieSided);
+            document.querySelector('.die-body').innerText = dieResult;
+            
+            // alternate player's turn
+            pTurn = (pTurn % 2) + 1;
+                    
+            //move player token
+            console.log(`player${pTurn} was on tile ${tilePos[pTurn - 1]} and die result is ${dieResult}`);
+            tilePos[pTurn - 1] += dieResult;
+        
+            // snakes, from higher to lower tile position
+            jumpPoint(28, 12);
+            jumpPoint(49, 34);
+            jumpPoint(62, 52);
+            jumpPoint(78, 43);
+            jumpPoint(99, 80);
+            // ladders, from lower to higher tile position
+            jumpPoint(4, 23);
+            jumpPoint(37, 88);
+            jumpPoint(51, 90);
+        
+            // check whether player reaches last tile
+            if (tilePos[pTurn - 1] >= (nRows * nRows)) {
+                tilePos[pTurn - 1] = (nRows * nRows);
+                document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
+                setTimeout(function() {
+                    alert(`Game ends. Player${pTurn} has reached the finishing tile.\nTo play again, click the Restart Game button or refresh the browser. Have you tried looking for the hidden game mode? Hint: use the DOM to look for button1 location.`);
+                }, 100);
+            };
+        
+            // set time delay so as to show player landed on jumpPoint start, else player will straightaway go direct to jumpPoint end position
+            setTimeout(function() {
+                document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
+                console.log(`player${pTurn} is now on tile ${tilePos[pTurn - 1]}`);
+            }, timer);
+        });
+    });
+
+    // game mode 2
+    const button1 = document.createElement('button');
+    button1.classList.add('button1');
+    button1.innerHTML = 'Start Game 2';
+    document.querySelector('body').append(button1);
+    button1.addEventListener('click', (e) => {
+        
+        // introduction
+        document.querySelector('.title').innerText = '';
+        menu.innerText = "Chapter 12: Move Gollum into Mount Doom.\ndocument.querySelector('#mount-doom').append(div12);\nChapter 13: remove Gollum and the Ring from the DOM.\ndocument.querySelector('#gollum')\n.remove();\n\nSo what happened in between?";
+        
+        // introduction 2
+        setTimeout(() => {
+            alert('Next');
+            document.querySelector('.title').innerText = 'LOTR';
+            menu.innerText = 'This is the hidden game mode. You are now witnessing the events happening between Chapter 12 and 13 of your homework. Click the white button continuously to press forward!';
+        }, 100);
+
+        button.remove();
+        button1.innerHTML = 'Restart Game';
+        button1.setAttribute('onClick', 'window.location.reload()');
+
+        makePBoard();
+        makeToken(2);
+        makeDie();
+
+        setTimeout(() => {
+            alert('Get ready!')
+        }, 300);
+
+        document.querySelector('.die-body').innerText = 'Tap Me!';
+
+        // starting position
+        tilePos = [40, 40];
+        document.querySelector('#tile' + tilePos[0]).append(document.querySelector('.token1'));
+        document.querySelector('#tile' + tilePos[1]).append(document.querySelector('.token2'));
+
+        // move towards last tile at every click
+        document.querySelector('.die-body').addEventListener('click', (e) => {
+            tilePos[0]++;
+            document.querySelector('#tile' + tilePos[0]).append(document.querySelector('.token1'));
+            tilePos[1] = tilePos[0];
+            document.querySelector('#tile' + tilePos[1]).append(document.querySelector('.token2'));
+        });
+
+        // move towards first tile at every interval
+        let recurrence = setInterval(function() {
+            if (tilePos[0] === 81) {
+                document.querySelector('.token2').remove();
+                alert('After a fierce struggle, Gollum, holding the Ring, fell over the edge and into the lava of Mount Doom. This was why they were removed from the DOM.')
+                clearInterval(recurrence);
+            } else if (tilePos[0] === 1) {
+                alert('Gollum escaped Mount Doom with the Ring. You have created a new timeline and Chapter 13 of U1D8 homework never happened. Try again to set back the correct timeline.')
+                clearInterval(recurrence);
+            } else {
+                tilePos[0]--;
+                document.querySelector('#tile' + tilePos[0]).append(document.querySelector('.token1'));
+                tilePos[1] = tilePos[0];
+                document.querySelector('#tile' + tilePos[1]).append(document.querySelector('.token2'));
+            };
+        }, timer);
+    });
 };
 
 // create square board
@@ -41,7 +163,7 @@ const makeSBoard = (num) => {
     };
 };
 
-// create pyramid board (EXPERIMENTAL)
+// create pyramid board
 const makePBoard = () => {
     const board = document.createElement('div');
     board.classList.add('board1', 'pBoard');
@@ -70,7 +192,7 @@ const makePBoard = () => {
     };
 };
 
-// create tiles for sBoard
+// create tiles for squareBoard
 const makeTiles = (num) => {
     const tiles = document.createElement('div');
     tiles.classList.add('tile');
@@ -78,7 +200,8 @@ const makeTiles = (num) => {
     tiles.innerText = num;
     tiles.setAttribute('id', 'tile' + num);
 };
-// create tiles for pBoard
+
+// create tiles for pyramidBoard
 const makePTiles = (num) => {
     const tiles = document.createElement('div');
     tiles.classList.add('tile1');
@@ -87,16 +210,8 @@ const makePTiles = (num) => {
     tiles.setAttribute('id', 'tile' + num);
 };
 
-
 // create the game token(s)
 const makeToken = (num) => {
-    // const start = document.createElement('div');
-    // start.classList.add('tile', 'start');
-    // start.innerText = 'Start';
-    // document.querySelector('body').insertBefore(start, document.querySelector('body').childNodes[3]);
-    
-    // document.querySelector('body').insertBefore(token, document.querySelector('body').childNodes[3]);
-    
     for (let i = 1; i <= num; i++) {
         const token = document.createElement('div');
         token.classList.add('token' + i);
@@ -120,32 +235,18 @@ const makeDie = () => {
 };
 
 // create ladder
-const makeArrow = (num) => {
-    const arrow = document.createElement('div');
-    arrow.classList.add('arrow');
-    document.querySelector('body').insertBefore(arrow, document.querySelector('body').childNodes[5]);
+const makeLadder = (num) => {
+    const ladder = document.createElement('div');
+    ladder.classList.add('ladder');
+    document.querySelector('body').insertBefore(ladder, document.querySelector('body').childNodes[5]);
     for (let i = 0; i < num; i++) {
-        const ladder = document.createElement('img');
-        ladder.classList.add('ladder' + i);
-        ladder.src = '/image/ladder' + i + '.png';
-        arrow.append(ladder);
+        const ladder1 = document.createElement('img');
+        ladder1.classList.add('ladder' + i);
+        ladder1.src = '/image/ladder' + i + '.png';
+        ladder.append(ladder1);
     };
-
-
-
-
-    // for (let i = 0; i < num; i++) {
-    //     const arrow1 = document.createElement('div');
-    //     arrow1.classList.add('arrow' + i);
-    //     arrow.append(arrow1);
-    //     const arrowTip = document.createElement('div');
-    //     arrowTip.classList.add('arrowTip' + i);
-    //     arrow1.append(arrowTip);         
-    //     const arrowBody = document.createElement('div');
-    //     arrowBody.classList.add('arrowBody' + i);
-    //     arrow1.append(arrowBody);
-    // };
 };
+
 // create snake
 const makeSnake = (num) => {
     const snake = document.createElement('div');
@@ -172,14 +273,9 @@ const makeSnake = (num) => {
         snakeImage.classList.add('snake' + i);
         snakeImage.src = '/image/snake' + i + '.png';
         snake.append(snakeImage);
-    }
-        
-
-
-
-
-
+    };
 };
+
 // create jump points for sname and ladder
 const jumpPoint = (startPos, endPos) => {
     if (tilePos[pTurn - 1] === startPos) {
@@ -200,65 +296,19 @@ const jumpPoint = (startPos, endPos) => {
 
 
 ////////////////////
-// Start
+// Start of Game
 ////////////////////
 
 const h1 = document.createElement('h1');
 h1.classList.add('title');
-h1.innerText = 'Welcome to Snakes & Ladders!'; // maybe can upgrade to Slides and Esca-Ladders
+h1.innerText = 'Welcome to Snakes & Ladders!';
 document.querySelector('body').prepend(h1);
 
-// game stats
-let nRows = 10; // number of rows for the board
+// game settings
+let nRows = 10; // even number, rows for game 1 board
 let tilePos = [1, 1]; // player [1, 2]'s starting position
-let timer = 300; // time delay to move the token
-let dieSided = 2; // maximum number on the die
+let dieSided = 6; // maximum number on the die
 let pTurn = 0; // which player's turn to go
+let timer = 400; // time delay (in milliseconds) to move the token
 
 makeMenu();
-makeSBoard(nRows);
-// makePBoard();
-makeToken(2);
-makeDie();
-makeArrow(3);
-makeSnake(3);
-
-
-// roll die, get number
-document.querySelector('.die-body').addEventListener('click', (e) => {
-// document.querySelector('.die-body').onclick = function rollDie() {
-    const dieResult = Math.ceil(Math.random() * dieSided);
-    document.querySelector('.die-body').innerText = dieResult;
-
-    // determine which player's turn
-    pTurn = (pTurn % 2) + 1;
-
-    //move player token
-    console.log(`player${pTurn} was on tile ${tilePos[pTurn - 1]} and die result is ${dieResult}`);
-    tilePos[pTurn - 1] += dieResult;
-
-    // // snakes, higher to lower tile position
-    jumpPoint(28, 12);
-    jumpPoint(49, 34);
-    jumpPoint(62, 52);
-    jumpPoint(78, 43);
-    jumpPoint(99, 80);
-    // // ladders, lower to higher tile position
-    jumpPoint(4, 23);
-    jumpPoint(37, 88);
-    jumpPoint(51, 90);
-
-    if (tilePos[pTurn - 1] >= (nRows * nRows)) {
-        tilePos[pTurn - 1] = (nRows * nRows);
-        document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
-        setTimeout(function() {
-            alert(`Game ends. Player${pTurn} has reached the finish tile.\nRefresh the browser to play again.`);
-        }, 100);
-    };
-
-    setTimeout(function() {
-        document.querySelector('#tile' + tilePos[pTurn - 1]).append(document.querySelector('.token' + pTurn));
-        console.log(`player${pTurn} is now on tile ${tilePos[pTurn - 1]}`);
-    }, timer);
-
-});

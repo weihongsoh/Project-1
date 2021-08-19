@@ -90,10 +90,6 @@
     border: 1px solid black;
     width: 1020px;
     height: 1020px;
-    /* background: transparent; */
-    /* background-color: transparent; */
-    /* margin: auto; */
-    /* width: 90%; */
 }
 
 /* for pBoard */
@@ -108,22 +104,41 @@
     height: 918px;
 }
 
+.button0 {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 470px;
+}
+.button1 {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 530px;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
 
 .die {
     padding: 4px;
     background-color: white;
     border: 1px solid black;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 15%;
     align-items: center;
     justify-content: center;
     display: flex;
-    font-size: 50px;
+    font-size: 60px;
     position: absolute;
     z-index: 1;
-    top: 420px;
-    left: 40px;
+    top: 440px;
+    left: 150px;
 }
 
 /* for sBoard */
@@ -173,10 +188,23 @@
 
 }
 
+.ladder {
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
 .menu {
     position: absolute;
     width: 300px;
-    height: 400px;
+    height: 450px;
     background: rgb(255, 241, 202);
     font-size: 20px;
     top: 145px;
@@ -308,6 +336,18 @@
     top: 660px;
 }
 
+.snake {
+    animation: fadeIn 8s;
+    -webkit-animation: fadeIn 8s;
+}
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
 
 .start {
     position: relative;
@@ -328,10 +368,9 @@
     border: 1px solid gray;
     background: transparent;
     z-index: 1;
+    text-shadow: 2px 2px 2px black;
     /* align-items: center; */
     /* justify-content: center; */
-    text-shadow: 2px 2px 2px black;
-    /* background: rgb(255, 229, 124); */
 }
 
 /* for pBoard */
@@ -339,14 +378,14 @@
     height: 100px;
     flex-basis: 100px;
     display: flex;
-    color: white;
+    color: red;
+    font-size: 18px;
     border: 1px solid gray;
     background: transparent;
     z-index: 1;
-}
-
-#tile1, #tile100 {
-    /* background: white; */
+    text-shadow: 2px 2px 2px black;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .title {
@@ -358,9 +397,6 @@
     position: relative;
     top: 30px;
     left: 45px;
-    /* bottom: -20px; */
-    /* left: 102px; */
-    /* bottom: 102px; */
 }
 .tokenTop1 {
     background: red;
@@ -386,9 +422,6 @@
     position: relative;
     top: 30px;
     left: 5px;
-    /* bottom: -20px; */
-    /* left: 102px; */
-    /* bottom: 102px; */
 }
 .tokenTop2 {
     background: blue;
